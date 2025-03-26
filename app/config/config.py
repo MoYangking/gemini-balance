@@ -41,14 +41,17 @@ class Settings(BaseSettings):
     STREAM_LONG_TEXT_THRESHOLD: int = DEFAULT_STREAM_LONG_TEXT_THRESHOLD
     STREAM_CHUNK_SIZE: int = DEFAULT_STREAM_CHUNK_SIZE
     
+    # Pydantic V2 配置
+    model_config = {
+        "env_file": ".env",
+        "extra": "allow"  # 允许额外字段
+    }
+    
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # 设置默认AUTH_TOKEN（如果未提供）
         if not self.AUTH_TOKEN and self.ALLOWED_TOKENS:
             self.AUTH_TOKEN = self.ALLOWED_TOKENS[0]
-    
-    class Config:
-        env_file = ".env"
 
 
 # 创建全局配置实例
