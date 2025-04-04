@@ -24,6 +24,7 @@ class Settings(BaseSettings):
     TOOLS_CODE_EXECUTION_ENABLED: bool = False
     SHOW_SEARCH_LINK: bool = True
     SHOW_THINKING_PROCESS: bool = True
+    TIME_OUT: int = DEFAULT_TIMEOUT
     
     # 图像生成相关配置
     PAID_KEY: str = ""
